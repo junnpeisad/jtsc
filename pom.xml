@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jt</groupId>
+    <artifactId>springboot_demo4</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>jt</module>
+    </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.5</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <!--指定JDK版本-->
+        <java.version>1.8</java.version>
+        <!--跳过测试类打包-->
+        <skipTests>true</skipTests>
+    </properties>
+
+    <!--按需导入
+        历史说明: 2010 原来SSM 需要手动的编辑大量的的配置文件
+        思想: SpringBoot使用体现了"开箱即用"的思想
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <!--Springboot的启动器 在内部已经将整合的配置写好,实现拿来就用-->
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--支持热部署 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
+        <!--引入插件lombok 自动的set/get/构造方法插件  -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!--引入数据库驱动 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!--springBoot数据库连接  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <!--spring整合mybatis-plus 删除mybatis的包 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.3</version>
+        </dependency>
+
+    </dependencies>
+
+    <!--build标签
+        springboot项目在打包部署发布时,需要依赖maven工具API
+        如果不添加该插件,则直接影响项目发布
+    -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.5.3</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

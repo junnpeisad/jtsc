@@ -1,0 +1,25 @@
+server:
+  port: 8091
+  servlet:
+    context-path: /
+
+#配置数据源
+spring:
+  datasource:
+    #如果使用高版本驱动 则添加cj
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/jt?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+    username: root
+    password: root123456
+
+
+#mybatis-plush配置
+mybatis-plus:
+  type-aliases-package: com.jt.pojo
+  mapper-locations: classpath:/mappers/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.jt.mapper: debug
